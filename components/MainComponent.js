@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { ScrollView, Text, View, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -221,10 +222,87 @@ function MainNavigatorDrawer() {
 }
 
 class Main extends Component {
+=======
+import Menu from './MenuComponent';
+import { DISHES } from '../shared/dishes';
+import Dishdetail from './DishdetailComponent';
+import { View, Platform } from 'react-native';
+import Home from './HomeComponent';
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+import { Icon } from 'react-native-elements';
+
+const MenuNavigator = createStackNavigator({
+  Menu: { screen: Menu },
+  Dishdetail: { screen: Dishdetail }
+},
+  {
+    initialRouteName: 'Menu',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: "#512DA8"
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        color: "#fff"
+      }
+    }
+  }
+);
+
+const HomeNavigator = createStackNavigator({
+  Home: { screen: Home }
+}, {
+  navigationOptions: ({ navigation }) => ({
+    headerStyle: {
+      backgroundColor: "#512DA8"
+    },
+    headerTitleStyle: {
+      color: "#fff"
+    },
+    headerTintColor: "#fff"
+  })
+});
+
+const MainNavigator = createDrawerNavigator({
+  Home:
+  {
+    screen: HomeNavigator,
+    navigationOptions: {
+      title: 'Home',
+      drawerLabel: 'Home'
+    }
+  },
+  Menu:
+  {
+    screen: MenuNavigator,
+    navigationOptions: {
+      title: 'Menu',
+      drawerLabel: 'Menu'
+    },
+  }
+}, {
+  drawerBackgroundColor: '#D1C4E9'
+});
+
+class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dishes: DISHES,
+      selectedDish: null
+    }
+
+  }
+
+  onDishSelect(dishId) {
+    this.setState({ selectedDish: dishId })
+  }
+>>>>>>> 0a2bd5f1e40cac232e33461e7e6c3820e0e3d86a
 
   render() {
 
     return (
+<<<<<<< HEAD
       <NavigationContainer>
         <MainNavigatorDrawer />
       </NavigationContainer>
@@ -257,4 +335,13 @@ const styles = StyleSheet.create({
 });
 
 
+=======
+      <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
+        <MainNavigator />
+      </View>
+    )
+  }
+}
+
+>>>>>>> 0a2bd5f1e40cac232e33461e7e6c3820e0e3d86a
 export default Main;

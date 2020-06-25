@@ -10,6 +10,12 @@ class Menu extends Component {
       dishes: DISHES
     };
   }
+<<<<<<< HEAD
+=======
+  static navigationOptions = {
+    title: 'Menu'
+  };
+>>>>>>> 0a2bd5f1e40cac232e33461e7e6c3820e0e3d86a
 
   render() {
     const { navigate } = this.props.navigation;
@@ -28,6 +34,7 @@ class Menu extends Component {
     };
 
     return (
+<<<<<<< HEAD
       <View>
         <FlatList
 
@@ -36,6 +43,14 @@ class Menu extends Component {
           keyExtractor={item => item.id.toString()}
         />
       </View>
+=======
+      <FlatList
+
+        data={this.state.dishes}
+        renderItem={renderMenuItem}
+        keyExtractor={item => item.id.toString()}
+      />
+>>>>>>> 0a2bd5f1e40cac232e33461e7e6c3820e0e3d86a
     );
   }
 }
