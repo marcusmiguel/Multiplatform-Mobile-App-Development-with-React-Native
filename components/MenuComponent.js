@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { Text, FlatList } from 'react-native';
 import { Tile } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
@@ -17,7 +16,6 @@ class Menu extends Component {
   render() {
     const { navigate } = this.props.navigation;
     const renderMenuItem = ({ item, index }) => {
-
       return (
         <Tile
           key={index}
@@ -37,9 +35,7 @@ class Menu extends Component {
     }
     else if (this.props.dishes.errMess) {
       return (
-        <View>
-          <Text>{props.dishes.errMess}</Text>
-        </View>
+        <Text>{this.props.dishes.errMess}</Text>
       );
     }
     else {
