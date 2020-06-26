@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Home from './HomeComponent';
+import Menu from './MenuComponent';
+import DishDetail from './DishdetailComponent';
+import Contact from './ContactComponent';
+import About from './AboutComponent';
 import { ScrollView, Text, View, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -6,11 +11,7 @@ import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer'
 import { Icon } from 'react-native-elements';
 import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
 import { connect } from 'react-redux';
-import Home from './HomeComponent';
-import Menu from './MenuComponent';
-import DishDetail from './DishdetailComponent';
-import Contact from './ContactComponent';
-import About from './AboutComponent';
+import Reservation from './ReservationComponent';
 
 const mapStateToProps = state => {
   return {
@@ -232,9 +233,46 @@ function MainNavigatorDrawer() {
           )
         }}
       />
+      <MainNavigator.Screen
+        name="Reserve Table"
+        component={ReservationNavigatorScreen}
+        options={{
+          drawerIcon: ({ color }) => (
+            <Icon
+              name='cutlery'
+              type='font-awesome'
+              size={24}
+              iconStyle={{ color: color }}
+            />
+          )
+        }}
+      />
     </MainNavigator.Navigator>
   );
 }
+
+const ReservationNavigator = createStackNavigator();
+
+function ReservationNavigatorScreen() {
+  return (
+    <ReservationNavigator.Navigator
+      initialRouteName='About Us'
+      screenOptions={HeaderOptions}
+    >
+      <ReservationNavigator.Screen
+        name="Reserve Table"
+        component={Reservation}
+        options={
+          ({ navigation }) => ({
+            headerLeft: () =>
+              <MenuIcon navigation={navigation} />
+          })
+        }
+      />
+    </ReservationNavigator.Navigator>
+  )
+}
+
 
 class Main extends Component {
   componentDidMount() {
