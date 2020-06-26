@@ -8,7 +8,7 @@ import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/
 import { connect } from 'react-redux';
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
-import Dishdetail from './DishdetailComponent';
+import DishDetail from './DishdetailComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 
@@ -76,8 +76,8 @@ function MenuNavigatorScreen() {
         }
       />
       <MenuNavigator.Screen
-        name="Dishdetail"
-        component={Dishdetail}
+        name="DishDetail"
+        component={DishDetail}
         options={{ headerTitle: "Dish Detail" }}
       />
     </MenuNavigator.Navigator>
