@@ -117,10 +117,6 @@ class DishDetail extends Component {
 
     render() {
         const dishId = this.props.route.params.dishId;
-        console.log(this.props.comments);
-        console.log(this.props.comments);
-        console.log(this.props.comments);
-        console.log(this.props.comments);
         return (
             <ScrollView>
                 <RenderDish dish={this.props.dishes.dishes[+dishId]}

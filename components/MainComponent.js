@@ -12,6 +12,7 @@ import { Icon } from 'react-native-elements';
 import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
 import { connect } from 'react-redux';
 import Reservation from './ReservationComponent';
+import Favorites from './FavoriteComponent';
 
 const mapStateToProps = state => {
   return {
@@ -247,6 +248,20 @@ function MainNavigatorDrawer() {
           )
         }}
       />
+      <MainNavigator.Screen
+        name="My Favorites"
+        component={FavoritesNavigatorScreen}
+        options={{
+          drawerIcon: ({ color }) => (
+            <Icon
+              name='heart'
+              type='font-awesome'
+              size={24}
+              iconStyle={{ color: color }}
+            />
+          )
+        }}
+      />
     </MainNavigator.Navigator>
   );
 }
@@ -273,6 +288,33 @@ function ReservationNavigatorScreen() {
   )
 }
 
+
+const FavoritesNavigator = createStackNavigator();
+
+function FavoritesNavigatorScreen() {
+  return (
+    <FavoritesNavigator.Navigator
+      initialRouteName='My Favorites'
+      screenOptions={HeaderOptions}
+    >
+      <FavoritesNavigator.Screen
+        name="My Favorites"
+        component={Favorites}
+        options={
+          ({ navigation }) => ({
+            headerLeft: () =>
+              <MenuIcon navigation={navigation} />
+          })
+        }
+      />
+      <FavoritesNavigator.Screen
+        name="DishDetail"
+        component={DishDetail}
+        options={{ headerTitle: "Dish Detail" }}
+      />
+    </FavoritesNavigator.Navigator>
+  )
+}
 
 class Main extends Component {
   componentDidMount() {
