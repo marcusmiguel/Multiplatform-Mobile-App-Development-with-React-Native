@@ -4,7 +4,7 @@ import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
-import { ScrollView, Text, View, Image, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
@@ -165,7 +165,7 @@ function AboutUsNavigatorScreen() {
     </AboutUsNavigator.Navigator>
 
   )
-}
+};
 
 const MainNavigator = createDrawerNavigator();
 
@@ -353,11 +353,14 @@ function LoginNavigatorScreen() {
 }
 
 class Main extends Component {
+
   componentDidMount() {
     this.props.fetchDishes();
     this.props.fetchComments();
     this.props.fetchPromos();
     this.props.fetchLeaders();
+
+
   }
 
   render() {
@@ -391,6 +394,6 @@ const styles = StyleSheet.create({
     width: 80,
     height: 60
   }
-});
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
